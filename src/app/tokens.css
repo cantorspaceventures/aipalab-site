@@ -1,0 +1,97 @@
+/* aipalab design system tokens. Source: https://claude.ai/artifact/SzMowns7m8KmrYkjg7xPWb (tokens.json). Regenerate, do not hand-edit. */
+
+:root {
+  --paper: #f4f6f4;
+  --paper-raised: #ffffff;
+  --paper-sunk: #e8edea;
+  --petrol: #0b2328;
+  --on-petrol: #f4f6f4;
+  --ink: #0b2328;
+  --ink-muted: #4a5d60;
+  --hairline: #d3dbd8;
+  --hairline-strong: #8a9a98;
+  --accent: #1f6f68;
+  --accent-strong: #17554f;
+  --on-accent: #ffffff;
+  --accent-wash: #dcebe8;
+  --brass: #b8862f;
+  --brass-text: #7e5a1c;
+  --rating-recommended: #0f5f86;
+  --rating-conditions: #8a5a00;
+  --rating-watchlist: #59656e;
+  --rating-declined: #a3362a;
+  --rating-wash: #eef1ef;
+  --shadow-float: 0 12px 32px -12px rgba(11, 35, 40, 0.28);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0a1b1f;
+    --paper-raised: #10262b;
+    --paper-sunk: #061316;
+    --petrol: #163c43;
+    --on-petrol: #e8eeec;
+    --ink: #e8eeec;
+    --ink-muted: #9db0b0;
+    --hairline: #23393d;
+    --hairline-strong: #4f6a6d;
+    --accent: #6cc2b6;
+    --accent-strong: #8fd6cb;
+    --on-accent: #062022;
+    --accent-wash: #123a3a;
+    --brass: #d4a54c;
+    --brass-text: #e0b967;
+    --rating-recommended: #7db9e0;
+    --rating-conditions: #e3ae4a;
+    --rating-watchlist: #a7b3ba;
+    --rating-declined: #f08c7e;
+    --rating-wash: #0f2226;
+    --shadow-float: 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #0a1b1f;
+  --paper-raised: #10262b;
+  --paper-sunk: #061316;
+  --petrol: #163c43;
+  --on-petrol: #e8eeec;
+  --ink: #e8eeec;
+  --ink-muted: #9db0b0;
+  --hairline: #23393d;
+  --hairline-strong: #4f6a6d;
+  --accent: #6cc2b6;
+  --accent-strong: #8fd6cb;
+  --on-accent: #062022;
+  --accent-wash: #123a3a;
+  --brass: #d4a54c;
+  --brass-text: #e0b967;
+  --rating-recommended: #7db9e0;
+  --rating-conditions: #e3ae4a;
+  --rating-watchlist: #a7b3ba;
+  --rating-declined: #f08c7e;
+  --rating-wash: #0f2226;
+  --shadow-float: 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-pill: 999px;
+  --font-display: Newsreader, "Iowan Old Style", Georgia, serif;
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
