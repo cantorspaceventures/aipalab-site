@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const POSTER_WEBP = "/video/henry-poster.webp";
 const POSTER_JPG = "/video/henry-poster.jpg";
+const POSTER_WEBP_HD = "/video/henry-poster-1920.webp";
+const POSTER_JPG_HD = "/video/henry-poster-1920.jpg";
 const SRC_HD = "/video/henry-1080.mp4";
 const SRC_SD = "/video/henry-720.mp4";
 const DURATION = "2:31";
@@ -52,11 +54,19 @@ export function HeroVideo() {
     const v = videoRef.current;
     if (!v) return;
     v.currentTime = 0;
-    v.play().catch(() => {
+    const iosFs = (v as HTMLVideoElement & { webkitEnterFullscreen?: () => void }).webkitEnterFullscreen;
+    const onIosEnd = () => close();
+    v.addEventListener("webkitendfullscreen", onIosEnd);
+    v.play().then(() => {
+      if (!document.fullscreenElement && !stageRef.current?.requestFullscreen && iosFs) {
+        try { iosFs.call(v); } catch { /* the full-window player is already showing */ }
+      }
+    }).catch(() => {
       /* Autoplay with sound was refused: the native controls stay visible so one tap starts it. */
       setLoading(false);
     });
-  }, [open, src]);
+    return () => v.removeEventListener("webkitendfullscreen", onIosEnd);
+  }, [open, src, close]);
 
   // Leaving full screen (Esc or the browser's own button) closes the player too.
   useEffect(() => {
@@ -69,20 +79,22 @@ export function HeroVideo() {
 
   return (
     <>
-      <button ref={triggerRef} type="button" className="hero-video" onClick={start} aria-label={`Play the aipalab introduction video, ${DURATION}, with sound`}>
-        <picture>
-          <source srcSet={POSTER_WEBP} type="image/webp" />
-          <img src={POSTER_JPG} alt="" width={1280} height={720} fetchPriority="high" decoding="async" />
-        </picture>
-        <span className="hero-video-shade" aria-hidden="true" />
-        <span className="hero-video-play" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
-        </span>
-        <span className="hero-video-caption">
-          <span className="eyebrow">Meet Henry · {DURATION}</span>
-          <span className="hero-video-title">A day with your AI analyst</span>
-        </span>
-      </button>
+      <section className="video-hero" aria-label="Introduction video">
+        <button ref={triggerRef} type="button" className="video-hero-frame" onClick={start} aria-label={`Play the aipalab introduction video, ${DURATION}, with sound`}>
+          <picture>
+            <source type="image/webp" srcSet={`${POSTER_WEBP} 1280w, ${POSTER_WEBP_HD} 1920w`} sizes="(orientation: portrait) 300vw, 100vw" />
+            <img src={POSTER_JPG} srcSet={`${POSTER_JPG} 1280w, ${POSTER_JPG_HD} 1920w`} sizes="(orientation: portrait) 300vw, 100vw" alt="" width={1920} height={1080} fetchPriority="high" decoding="async" />
+          </picture>
+          <span className="video-hero-shade" aria-hidden="true" />
+          <span className="video-hero-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
+          </span>
+          <span className="video-hero-caption">
+            <span className="eyebrow">Meet Henry · {DURATION}</span>
+            <span className="video-hero-title">A day with your AI analyst</span>
+          </span>
+        </button>
+      </section>
 
       <dialog ref={dialogRef} className="video-dialog" aria-label="aipalab introduction video" onCancel={(e) => { e.preventDefault(); close(); }}>
         <div ref={stageRef} className="video-stage">
