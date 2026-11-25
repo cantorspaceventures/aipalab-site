@@ -1,4 +1,5 @@
 import { Check, RatingBadge, ScenarioFan } from "@/components/graphics";
+import { HeroVideo } from "@/components/hero-video";
 
 const APP_URL = "https://app.aipalab.in";
 const CONTACT = "mailto:info@aipalab.in?subject=aipalab%20walkthrough";
@@ -46,6 +47,8 @@ export default function Home() {
       </header>
 
       <main>
+        <HeroVideo />
+
         <section className="hero">
           <div className="wrap">
             <div className="hero-copy">
