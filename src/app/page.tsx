@@ -1,4 +1,5 @@
-import { Check, RatingBadge, ScenarioFan } from "@/components/graphics";
+import { Check, RatingBadge } from "@/components/graphics";
+import { HeroVideo } from "@/components/hero-video";
 
 const APP_URL = "https://app.aipalab.in";
 const CONTACT = "mailto:info@aipalab.in?subject=aipalab%20walkthrough";
@@ -62,25 +63,7 @@ export default function Home() {
               <p className="hero-note">Decision support for investment committees. Your committee makes every decision.</p>
             </div>
 
-            <div className="exhibit" aria-label="Example page from a committee pack">
-              <div className="exhibit-head">
-                <div>
-                  <p className="eyebrow">Committee pack · G3 · Example</p>
-                  <p className="exhibit-title">Cold-chain logistics hub, phase 2</p>
-                </div>
-                <RatingBadge rating="conditions" />
-              </div>
-              <div className="exhibit-metrics">
-                <div className="mini-metric"><span>Equity IRR</span><b>24.6%</b><small>Range 11–38%</small></div>
-                <div className="mini-metric"><span>MOIC 5 yr</span><b>2.8x</b><small>Range 1.4–4.1x</small></div>
-                <div className="mini-metric"><span>Payback</span><b>38 mo</b><small>Base case</small></div>
-              </div>
-              <ScenarioFan />
-              <div className="exhibit-foot">
-                <span className="data muted">Cumulative free cash flow, AED</span>
-                <span className="data muted">Suggested by aipalab · awaiting committee</span>
-              </div>
-            </div>
+            <HeroVideo />
           </div>
         </section>
 
